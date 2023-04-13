@@ -8,7 +8,7 @@ import java.util.List;
 public class Employee {
 	// Primitive Obsession
 	public enum Gender {
-		Female, Male
+		Laki_Laki, Perempuan
 	}
 
 	private String employeeId;
