@@ -1,59 +1,34 @@
 package lib;
 
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Employee {
-	// Primitive Obsession
-	public enum Gender {
-		Laki_Laki, Perempuan
-	}
+	private EmployeeData employeedata;
 
-	private String employeeId;
-	private String firstName;
-	private String lastName;
-	private String idNumber;
-	private String address;
-	// Primitive Obsession
-	private LocalDate dateJoined;
+	private LocalDate dateJoined; // Primitive Obsession
 	private int monthWorkingInYear;
 
 	private boolean isForeigner;
-	private Gender gender; // Primitive Obsession
-
 	private int monthlySalary;
 	private int otherMonthlyIncome;
 	private int annualDeductible;
 
+	// Data Family
 	private String spouseName;
 	private String spouseIdNumber;
 
 	private List<String> childNames;
 	private List<String> childIdNumbers;
 
-	public Employee(String employeeId, String firstName, String lastName, String idNumber, String address,
-			LocalDate dateJoined, boolean isForeigner, Gender gender) {
-		this.employeeId = employeeId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.idNumber = idNumber;
-		this.address = address;
+	public Employee(EmployeeData employeedata, LocalDate dateJoined, boolean isForeigner) {
+		this.employeedata = employeedata;
 		this.dateJoined = dateJoined;
 		this.isForeigner = isForeigner;
-		this.gender = gender;
 
 		childNames = new LinkedList<String>();
 		childIdNumbers = new LinkedList<String>();
-	}
-
-	public Gender getGender() {
-		return gender;
-	}
-
-	public void setgender(Gender gender) {
-		this.gender = gender;
 	}
 
 	/**
@@ -92,12 +67,28 @@ public class Employee {
 
 	public void setSpouse(String spouseName, String spouseIdNumber) {
 		this.spouseName = spouseName;
-		this.spouseIdNumber = idNumber;
+		this.spouseIdNumber = spouseIdNumber;
 	}
 
 	public void addChild(String childName, String childIdNumber) {
 		childNames.add(childName);
 		childIdNumbers.add(childIdNumber);
+	}
+
+	public String getSpouseName() {
+		return spouseName;
+	}
+
+	public String getSpouseIdNumber() {
+		return spouseIdNumber;
+	}
+
+	public List<String> getChildNames() {
+		return childNames;
+	}
+
+	public List<String> getChildIdNumbers() {
+		return childIdNumbers;
 	}
 
 	public int getAnnualIncomeTax() {
