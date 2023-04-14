@@ -55,10 +55,20 @@ public class Employee {
 		this.otherMonthlyIncome = income;
 	}
 
+	// Long Method
 	public int getAnnualIncomeTax() {
+		calculateMonthWorkInYear();
 
-		// Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah
-		// bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
+		return TaxFunction.calculateTax(
+				monthlySalary,
+				otherMonthlyIncome,
+				monthWorkingInYear,
+				annualDeductible,
+				employeedata.getspouseIdNumber().equals(""),
+				employeedata.getchildIdNumbers().size());
+	}
+
+	private void calculateMonthWorkInYear() {
 		LocalDate date = LocalDate.now();
 
 		if (date.getYear() == dateJoined.getYear()) {
@@ -66,8 +76,5 @@ public class Employee {
 		} else {
 			monthWorkingInYear = 12;
 		}
-
-		return TaxFunction.calculateTax(monthlySalary, otherMonthlyIncome, monthWorkingInYear, annualDeductible,
-				employeedata.getspouseIdNumber().equals(""), employeedata.getchildIdNumbers().size());
 	}
 }
