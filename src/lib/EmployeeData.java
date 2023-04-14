@@ -1,6 +1,6 @@
 package lib;
 
-public class EmployeeData {
+public class EmployeeData extends FamiliyEmployee {
     private String employeeId;
     private String firstName;
     private String lastName;
@@ -16,6 +16,7 @@ public class EmployeeData {
 
     public EmployeeData(String employeeId, String firstName, String lastName, String idNumber, String address,
             Gender gender) {
+        super();
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
